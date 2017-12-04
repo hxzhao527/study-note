@@ -1,3 +1,8 @@
-# Golang 学习笔记
+# 学习笔记
 
-学习 [The Go Programming Language](https://book.douban.com/subject/26337545/)的笔记及exercise
+* [golang](https://github.com/HeartUnchange/study-note/tree/master/golang)
+* [css](https://github.com/HeartUnchange/study-note/tree/master/css)
+* [python](https://github.com/HeartUnchange/study-note/tree/master/python)
+* [js](https://github.com/HeartUnchange/study-note/tree/master/js])
+* [c++](https://github.com/HeartUnchange/study-note/tree/master/c++])
+* [java](https://github.com/HeartUnchange/study-note/tree/master/java])
