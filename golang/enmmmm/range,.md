@@ -111,3 +111,39 @@ func main() {
 第1个, 1, int, 0xc04200c300
 ```
 虽说还不是原生的地址，但是这次值是对的。
+
+在附一个，图个乐
+``` golang
+package main
+
+import (
+	"fmt"
+)
+
+func main() {
+	c1 := make(chan *int, 1)
+	raw := []int{1, 2, 3, 4, 5, 6}
+
+	go func() {
+		for {
+			a := <-c1
+			fmt.Printf("数据地址:%p, 值:%d\n", a, *a)
+		}
+	}()
+
+	for _, i := range raw {
+		c1 <- &i
+	}
+}
+```
+
+for range 可以等价视为(伪代码)：
+``` golang
+var index int 
+var element TypeYouLike
+for index, element = range slice{
+
+}
+del index
+del element
+```
