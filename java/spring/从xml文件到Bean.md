@@ -414,9 +414,42 @@ protected void processBeanDefinition(Element ele, BeanDefinitionParserDelegate d
 ```
 在这个里面
 ```java
-getReaderContext().fireComponentRegistered(new BeanComponentDefinition(bdHolder));
+BeanDefinitionReaderUtils.registerBeanDefinition(bdHolder, getReaderContext().getRegistry());
 ```
 就做了这个操作, 将解析完的*BeanDefinition*注册到容器中.
+细究之下,实际有效的代码是:
+```java
+/**
+ * Register the given bean definition with the given bean factory.
+ * @param definitionHolder the bean definition including name and aliases
+ * @param registry the bean factory to register with
+ * @throws BeanDefinitionStoreException if registration failed
+ */
+public static void registerBeanDefinition(
+		BeanDefinitionHolder definitionHolder, BeanDefinitionRegistry registry)
+		throws BeanDefinitionStoreException {
+	// Register bean definition under primary name.
+	String beanName = definitionHolder.getBeanName();
+	registry.registerBeanDefinition(beanName, definitionHolder.getBeanDefinition());
+	// Register aliases for bean name, if any.
+	String[] aliases = definitionHolder.getAliases();
+	if (aliases != null) {
+		for (String alias : aliases) {
+			registry.registerAlias(beanName, alias);
+		}
+	}
+}
+```
+至此找到了根源.
+那如果已经得到了一个*BeanDefinition*, 怎么才能注册到spring容器上. 也就是这个*BeanDefinitionRegistry*在哪定义的?
+其实传入的就是一个**BeanFactory**, 这个传入的过程在188行,
+```java
+ClassPathXmlApplicationContext context = new ClassPathXmlApplicationContext(new String[]{"META-INF/spring/dubbo-demo-provider.xml"});
+DefaultListableBeanFactory factory = (DefaultListableBeanFactory)context.getBeanFactory();
+BeanDefinition newBeanObj= new RootBeanDefinition();
+factory.registerBeanDefinition("beanName", newBeanObj);
+```
+取出```BeanFactory```手动注册一下就好了.
 
 
 至此, 我们的*Bean*可算注册到容器中了. 这还只是```refresh```函数中的第二步, 其他操作另写.
