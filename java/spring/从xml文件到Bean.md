@@ -442,7 +442,8 @@ public static void registerBeanDefinition(
 ```
 至此找到了根源.
 那如果已经得到了一个*BeanDefinition*, 怎么才能注册到spring容器上. 也就是这个*BeanDefinitionRegistry*在哪定义的?
-其实传入的就是一个**BeanFactory**, 这个传入的过程在188行,
+其实传入的就是一个**BeanFactory**, 这个传入的过程在前面已经展示,这里贴图展示一下实际过程.
+![BeanDefinitionRegistry到底是何方神圣](img/BeanDefinitionRegistry到底是何方神圣.png)
 ```java
 ClassPathXmlApplicationContext context = new ClassPathXmlApplicationContext(new String[]{"META-INF/spring/dubbo-demo-provider.xml"});
 DefaultListableBeanFactory factory = (DefaultListableBeanFactory)context.getBeanFactory();
