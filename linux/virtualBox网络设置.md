@@ -77,3 +77,27 @@ netctl start host-static
 1. [centos&Linux 双网卡双网关的配置方法详解](http://blog.csdn.net/tksnail/article/details/60865812)
 2. [VirtualBox实现内外网络互访问的配置](https://www.cnblogs.com/cindyleo/p/5836732.html)
 3. [在 VirtualBox 里安装 Arch Linux 操作系统](https://www.jianshu.com/p/98b8965b1d10)
+
+附录：
+
+1. ubuntu的配置 /etc/network/interfaces
+```
+source /etc/network/interfaces.d/*
+
+# The loopback network interface
+auto lo
+iface lo inet loopback
+
+# The primary network interface
+auto enp0s3
+iface enp0s3 inet dhcp
+
+auto enp0s8
+iface enp0s8 inet static
+address 172.16.35.5
+netmask 255.255.255.0
+```
+然后执行
+```
+sudo service networking restart
+```
