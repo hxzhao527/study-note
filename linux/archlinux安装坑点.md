@@ -21,3 +21,6 @@ wpa_supplicant -B -i interface -c <(wpa_passphrase MYSSID passphrase)
 ```sh
 dhcpcd interface
 ```
+
+3. 安装grub识别不到原有的系统
+除了grub，需要额外安装```os-prober```， 然后在```grub-mkconfig```，就可以了。
