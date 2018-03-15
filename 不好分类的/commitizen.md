@@ -1,5 +1,6 @@
 # win下commitizen配置
 
+## 1. 安装与配置
 根据[官方示例](https://github.com/commitizen/cz-cli#conventional-commit-messages-as-a-global-utility), 使用
 ```sh
 echo '{ "path": "cz-conventional-changelog" }' > ~/.czrc
@@ -17,3 +18,7 @@ git cz
 optional:
 
 vscode 有这个插件~~~哈哈
+
+## 2. 使用
+###1. donate a scope
+这里的内容不能含空格? 在vscode里是这样的. 
