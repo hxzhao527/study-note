@@ -24,3 +24,6 @@ dhcpcd interface
 
 3. 安装grub识别不到原有的系统
 除了grub，需要额外安装```os-prober```， 然后在```grub-mkconfig```，就可以了。
+
+4. 添加信任证书
+将```*.crt```文件放到```/etc/ca-certificates/trust-source/anchors/```, 然后执行```trust extract-compat```.
