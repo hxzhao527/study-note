@@ -9,14 +9,15 @@
 2. 连接wifi
 需要一个英文名的wifi， 即ssid为英文字母
 参考[Wireless network configuration](https://wiki.archlinux.org/index.php/Wireless_network_configuration#Example)
+首先```ip a```查看所有的网卡, 确定无线网卡名, 假定为```wlo1```
 ```sh
-ip link set interface up
-``` 
-启用名为interface的网卡，后连接
-```sh
-wpa_supplicant -B -i interface -c <(wpa_passphrase MYSSID passphrase)
+ip link set wlo1 up
 ```
-提供ssid（wifi名）和passphrase（密码）
+启用名为wlo1的网卡，后连接
+```sh
+wpa_supplicant -B -i wlo1 -c <(wpa_passphrase MYSSID passphrase)
+```
+提供MYSSID（wifi名）和passphrase（密码）
 之后获取ip
 ```sh
 dhcpcd interface
