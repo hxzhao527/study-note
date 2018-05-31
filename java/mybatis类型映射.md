@@ -1,4 +1,5 @@
 参考: http://www.mybatis.org/mybatis-3/zh/configuration.html#typeHandlers
+https://docs.oracle.com/javase/9/docs/api/java/sql/JDBCType.html
 |           Java 类型           |                             JDBC 类型                             |
 |:-----------------------------:|:-----------------------------------------------------------------:|
 |   java.lang.Boolean, boolean  |                        数据库兼容的 BOOLEAN                       |
