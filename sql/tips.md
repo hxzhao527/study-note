@@ -9,3 +9,7 @@ AND table_schema='数据库名';
 ```sql
 SELECT TABLE_NAME, ENGINE FROM information_schema.TABLES WHERE TABLE_SCHEMA = '数据库名';
 ```
+3. 清空数据
+```sql
+truncate TABLE_NAME
+```

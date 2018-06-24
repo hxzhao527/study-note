@@ -61,12 +61,19 @@ return 0, EOF.
 
 ________________________________
 
+## 检验输入
+
+发现用```gZipEncode```压缩得到的byte和别的语言的不一样, 这时为啥?
+难道是压缩环节出了问题?
+
 ## 瞅瞅源码
 
-```golang
-r, err := gzip.NewReader(bytes.NewReader(in))
-```
-初始化了一个```reader```
-```ioutil.ReadAll(r)``` 先是make了一个cap=bytes.MinRead, len=0的```*Buffer```, 
-然后调用```Buffer.ReadFrom```, 也就是```m, e := r.Read(b.buf[len(b.buf):cap(b.buf)])```
-这里的```r```是```gzip.Reader```, 第一次read时, 数据全读出, e是nil,
+发现如果```w.Close()```不用```defer```修饰, 结果就是对的, 难道```close```执行有问题?
+查了一下源码和文档, ```close```负责写入gzip的footer, 那就是```defer```导致footer没写入.
+
+## defer到底做了啥
+[defer](https://golang.org/ref/spec#Defer_statements)
+
+**函数返回的过程是这样的：先给返回值赋值，然后调用defer表达式，最后才是返回到调用函数中。**
+
+因此, ```b.Bytes()```在前, ```w.Close()```在后, 导致拿到的压缩数据有问题.
