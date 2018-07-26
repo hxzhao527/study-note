@@ -9,3 +9,7 @@ docker images | grep -v 172.16.154.27:5000 | awk 'NR>=2 {print $1x":"$2}' | awk 
 docker images | grep 172.16.154.27:5000 | awk '{print $1x":"$2}' | xargs -L 1 docker push
 docker images | grep 172.16.154.27:5000 | awk '{print $1x":"$2}' | xargs -L 1 docker rmi
 ```
+文本去重
+```sh
+awk '!seen[$0]++' filename
+```
