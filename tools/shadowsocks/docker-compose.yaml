@@ -1,0 +1,16 @@
+version: "3.3"
+services: 
+  shadowsocks:
+    image: shadowsocks/shadowsocks-libev
+    ports: 
+      - target: 1025
+        published: 8080
+      # 同一个端口可以同时map不同的协议, https://docs.docker.com/config/containers/container-networking/
+      #  protocol: tcp
+      # - target: 1025
+      #   published: 8080
+      #   protocol: udp
+    restart: always
+    volumes:
+      - "${PWD}/shadowsocks.json:/etc/shadowsocks.json"
+    command: ["ss-server", "-c", "/etc/shadowsocks.json", "-v"]
