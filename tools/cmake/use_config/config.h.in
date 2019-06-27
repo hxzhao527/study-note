@@ -1,0 +1,6 @@
+// the configured options and settings
+#define PROJECT_NAME "${PROJECT_NAME}"
+#define PROJECT_VERSION_MAJOR @PROJECT_VERSION_MAJOR@
+#define PROJECT_VERSION_MINOR @PROJECT_VERSION_MINOR@
+#define HOST_OS_NAME "@OS_NAME@"
+#define AUTHOR "@AUTHOR@"

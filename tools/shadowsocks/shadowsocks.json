@@ -1,0 +1,10 @@
+{
+    "server": "0.0.0.0",
+    "server_port": 1025,
+    "password": "gfw, fuck you",
+    "method": "chacha20",
+    "timeout": 300,
+    "no_delay": true,
+    "fast_open": true,
+    "reuse_port": true
+}
