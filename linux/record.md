@@ -75,4 +75,9 @@
       forward-socks5 / localhost:9050 . # forward to sock5
       ```
   3. enable service
+* ### install nvidia-driver
+  1. install non-free driver by `mhwd`
+  2. install `optimus-manager` by `pacman`
+  3. enable `optimus-manager` server: systemctl enable optimus-manager --now
+  4. optimus-manager --set-setup intel
   
