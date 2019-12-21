@@ -80,4 +80,8 @@
   2. install `optimus-manager` by `pacman`
   3. enable `optimus-manager` server: systemctl enable optimus-manager --now
   4. optimus-manager --set-setup intel
+* ### xfce hide title bar
+  ```
+  Go to Settings -> Window Manager Tweaks -> Accessibility. Enable the option Hide title of window when maximized
+  ```
   
